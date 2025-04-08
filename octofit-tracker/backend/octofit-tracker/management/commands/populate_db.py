@@ -12,21 +12,17 @@ class Command(BaseCommand):
         Leaderboard.objects.all().delete()
         Workout.objects.all().delete()
 
-        # Add test users
+        # Add test data
         user1 = User.objects.create(email="john.doe@example.com", name="John Doe", password="password123")
         user2 = User.objects.create(email="jane.smith@example.com", name="Jane Smith", password="password456")
 
-        # Add test teams
         team1 = Team.objects.create(name="Team Alpha", members=[user1.id, user2.id])
 
-        # Add test activities
         Activity.objects.create(activity_id="activity1", user=user1, description="Running 5km")
         Activity.objects.create(activity_id="activity2", user=user2, description="Cycling 10km")
 
-        # Add test leaderboard
         Leaderboard.objects.create(leaderboard_id="leaderboard1", team=team1, score=100)
 
-        # Add test workouts
         Workout.objects.create(workout_id="workout1", user=user1, details={"type": "Cardio", "duration": "30 mins"})
         Workout.objects.create(workout_id="workout2", user=user2, details={"type": "Strength", "duration": "45 mins"})
 
